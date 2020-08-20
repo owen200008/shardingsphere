@@ -19,12 +19,9 @@ package org.apache.shardingsphere.core.strategy.route;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
-import org.apache.shardingsphere.api.config.sharding.strategy.ComplexShardingStrategyConfiguration;
-import org.apache.shardingsphere.api.config.sharding.strategy.HintShardingStrategyConfiguration;
-import org.apache.shardingsphere.api.config.sharding.strategy.InlineShardingStrategyConfiguration;
-import org.apache.shardingsphere.api.config.sharding.strategy.ShardingStrategyConfiguration;
-import org.apache.shardingsphere.api.config.sharding.strategy.StandardShardingStrategyConfiguration;
+import org.apache.shardingsphere.api.config.sharding.strategy.*;
 import org.apache.shardingsphere.core.strategy.route.complex.ComplexShardingStrategy;
+import org.apache.shardingsphere.core.strategy.route.hash.ConsistencyHashShardingStrategy;
 import org.apache.shardingsphere.core.strategy.route.hint.HintShardingStrategy;
 import org.apache.shardingsphere.core.strategy.route.inline.InlineShardingStrategy;
 import org.apache.shardingsphere.core.strategy.route.none.NoneShardingStrategy;
@@ -54,6 +51,9 @@ public final class ShardingStrategyFactory {
         }
         if (shardingStrategyConfig instanceof HintShardingStrategyConfiguration) {
             return new HintShardingStrategy((HintShardingStrategyConfiguration) shardingStrategyConfig);
+        }
+        if (shardingStrategyConfig instanceof ConsistencyHashShardingStrategyConfiguration) {
+            return new ConsistencyHashShardingStrategy((ConsistencyHashShardingStrategyConfiguration) shardingStrategyConfig);
         }
         return new NoneShardingStrategy();
     }

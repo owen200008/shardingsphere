@@ -1,0 +1,34 @@
+schemaName: canary
+
+dataSources:
+        ds0:
+                url: jdbc:mysql://172.26.9.2:3306/canary?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false
+                username: dev
+                password: dev
+                connectionTimeoutMilliseconds: 30000
+                idleTimeoutMilliseconds: 60000
+                maxLifetimeMilliseconds: 1800000
+                maxPoolSize: 10
+        ds1:
+                url: jdbc:mysql://172.26.9.2:3306/canary_share?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false
+                username: dev
+                password: dev
+                connectionTimeoutMilliseconds: 30000
+                idleTimeoutMilliseconds: 60000
+                maxLifetimeMilliseconds: 1800000
+                maxPoolSize: 10
+
+shardingRule:
+        tables:
+                setting_entity:
+                        actualDataNodes: ds${0..1}.setting_entity
+                        databaseStrategy:
+                                chash:
+                                        shardingColumn: entity_id
+                                        json: "{\"key\":1}"
+        bindingTables:
+                - setting_entity
+        defaultDataSourceName: ds0
+        defaultTableStrategy:
+                 none:
+

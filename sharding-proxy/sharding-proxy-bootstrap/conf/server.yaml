@@ -1,0 +1,9 @@
+authentication:
+        users:
+                dev:
+                        password: dev
+                        authorizedSchemas: canary
+                
+props:
+        acceptor.size: 8  #用于设置接收客户端请求的工作线程个数，默认为CPU核数*2
+        sql.show: true  # 打印sql
