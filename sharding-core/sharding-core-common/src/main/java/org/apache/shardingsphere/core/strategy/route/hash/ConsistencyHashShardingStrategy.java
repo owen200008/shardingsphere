@@ -15,7 +15,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.TreeSet;
 
-public class ConsistencyHashShardingStrategy implements ShardingStrategy {
+/**
+ * ConsistencyHash sharding strategy.
+ */
+public final class ConsistencyHashShardingStrategy implements ShardingStrategy {
 
     private final String shardingColumn;
 
@@ -40,7 +43,7 @@ public class ConsistencyHashShardingStrategy implements ShardingStrategy {
     }
 
     @Override
-    public Collection<String> doSharding(Collection<String> availableTargetNames, Collection<RouteValue> shardingValues, ConfigurationProperties properties) {
+    public Collection<String> doSharding(final Collection<String> availableTargetNames, final Collection<RouteValue> shardingValues, final ConfigurationProperties properties) {
         RouteValue shardingValue = shardingValues.iterator().next();
 
         Preconditions.checkState(shardingValue instanceof ListRouteValue, "ConsistencyHash strategy cannot support this type sharding:" + shardingValue.toString());

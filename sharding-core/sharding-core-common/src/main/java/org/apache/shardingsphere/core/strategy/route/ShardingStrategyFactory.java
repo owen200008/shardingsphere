@@ -19,7 +19,12 @@ package org.apache.shardingsphere.core.strategy.route;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
-import org.apache.shardingsphere.api.config.sharding.strategy.*;
+import org.apache.shardingsphere.api.config.sharding.strategy.ComplexShardingStrategyConfiguration;
+import org.apache.shardingsphere.api.config.sharding.strategy.HintShardingStrategyConfiguration;
+import org.apache.shardingsphere.api.config.sharding.strategy.InlineShardingStrategyConfiguration;
+import org.apache.shardingsphere.api.config.sharding.strategy.ShardingStrategyConfiguration;
+import org.apache.shardingsphere.api.config.sharding.strategy.StandardShardingStrategyConfiguration;
+import org.apache.shardingsphere.api.config.sharding.strategy.ConsistencyHashShardingStrategyConfiguration;
 import org.apache.shardingsphere.core.strategy.route.complex.ComplexShardingStrategy;
 import org.apache.shardingsphere.core.strategy.route.hash.ConsistencyHashShardingStrategy;
 import org.apache.shardingsphere.core.strategy.route.hint.HintShardingStrategy;
