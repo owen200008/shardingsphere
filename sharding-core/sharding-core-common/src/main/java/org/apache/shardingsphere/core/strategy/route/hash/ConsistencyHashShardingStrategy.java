@@ -9,7 +9,11 @@ import org.apache.shardingsphere.core.strategy.route.value.ListRouteValue;
 import org.apache.shardingsphere.core.strategy.route.value.RouteValue;
 import org.apache.shardingsphere.underlying.common.config.properties.ConfigurationProperties;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.TreeSet;
 
 public class ConsistencyHashShardingStrategy implements ShardingStrategy {
 
